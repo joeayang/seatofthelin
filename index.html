@@ -18,9 +18,10 @@
         .suggestion-list {
             position: absolute; width: 100%; background: white; border: 1px solid #ddd;
             z-index: 100; max-height: 200px; overflow-y: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-radius: 0 0 8px 8px;
         }
         .suggestion-item { padding: 12px; cursor: pointer; border-bottom: 1px solid #f9f9f9; }
-        .suggestion-item:hover { background-color: #fff0f0; }
+        .suggestion-item:hover { background-color: #fff0f0; color: var(--main-red); }
 
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th { background-color: var(--main-red); color: white; padding: 10px; }
@@ -34,14 +35,15 @@
     <h2>🌸 賓客查詢系統 🌸</h2>
 
     <div class="search-box">
-        <label>👤 輸入姓名：</label>
-        <input type="text" id="nameInput" placeholder="請輸入姓名 (如：蘇)" autocomplete="off">
-        <div id="suggestionBox" class="suggestion-list" style="display:none;"></div>
+        <label>👤 輸入姓名 (自動索引)：</label>
+        <input type="text" id="nameInput" placeholder="例如：蘇" autocomplete="off">
+        <div id="nameSuggestionBox" class="suggestion-list" style="display:none;"></div>
     </div>
 
     <div class="search-box">
-        <label>📍 輸入桌次：</label>
-        <input type="text" id="tableInput" placeholder="如：主桌 或 1">
+        <label>📍 輸入桌次 (自動索引)：</label>
+        <input type="text" id="tableInput" placeholder="例如：主 或 11" autocomplete="off">
+        <div id="tableSuggestionBox" class="suggestion-list" style="display:none;"></div>
     </div>
 
     <div id="resultArea">
@@ -159,7 +161,7 @@
     },
     {
         "桌次": 12,
-        "姓名": "楊素芸",
+        "姓名": "楊素雲",
         "胸花": NaN
     },
     {
@@ -269,7 +271,7 @@
     },
     {
         "桌次": 16,
-        "姓名": "郭靜霓",
+        "姓名": "郭靜霓(素)",
         "胸花": NaN
     },
     {
@@ -539,7 +541,7 @@
     },
     {
         "桌次": 23,
-        "姓名": "賴永清",
+        "姓名": "賴永清(素)",
         "胸花": NaN
     },
     {
@@ -554,7 +556,7 @@
     },
     {
         "桌次": 25,
-        "姓名": "陳逸銘",
+        "姓名": "陳逸銘(素)",
         "胸花": NaN
     },
     {
@@ -1053,6 +1055,11 @@
         "胸花": NaN
     },
     {
+        "桌次": 53,
+        "姓名": "歐南靖",
+        "胸花": NaN
+    },
+    {
         "桌次": 55,
         "姓名": "許原嘉 & 夫人 #1",
         "胸花": NaN
@@ -1283,6 +1290,21 @@
         "胸花": NaN
     },
     {
+        "桌次": 62,
+        "姓名": "陳迺旭",
+        "胸花": NaN
+    },
+    {
+        "桌次": 62,
+        "姓名": "王乃元 & 夫人 #1",
+        "胸花": NaN
+    },
+    {
+        "桌次": 62,
+        "姓名": "王乃元 & 夫人 #2",
+        "胸花": NaN
+    },
+    {
         "桌次": 63,
         "姓名": "楊智諺",
         "胸花": NaN
@@ -1359,7 +1381,7 @@
     },
     {
         "桌次": 65,
-        "姓名": "許宏福",
+        "姓名": "許宏福(素)",
         "胸花": NaN
     },
     {
@@ -1569,7 +1591,7 @@
     },
     {
         "桌次": 72,
-        "姓名": "詹秀鑾",
+        "姓名": "詹秀鑾(素)",
         "胸花": NaN
     },
     {
@@ -1674,7 +1696,7 @@
     },
     {
         "桌次": 75,
-        "姓名": "張威傑",
+        "姓名": "張威傑(素)",
         "胸花": NaN
     },
     {
@@ -1794,171 +1816,179 @@
     },
     {
         "桌次": "主",
-        "姓名": "陳元泰",
+        "姓名": "陳元泰(主9)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "廖財固",
+        "姓名": "廖財固(主14)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "翟嘉恩 Leona",
+        "姓名": "翟嘉恩 Leona(主17)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "蘇月琴 #1",
+        "姓名": "蘇月琴 #1(主4)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "蘇宥筑 #1",
+        "姓名": "蘇宥筑 #1(主5)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "蘇美惠 #1",
+        "姓名": "蘇美惠 #1(主7)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "蘇麗娟 #1",
+        "姓名": "蘇麗娟 #1(主8)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "林金香 #1",
+        "姓名": "林金香 #1(主6)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "蘇明輝",
+        "姓名": "蘇明輝(主2)",
         "胸花": "主家 & 長老"
     },
     {
         "桌次": "主",
-        "姓名": "廖慧李",
+        "姓名": "廖慧李(主3)",
         "胸花": "主家 & 長老"
     },
     {
         "桌次": "主",
-        "姓名": "蘇晉揚",
+        "姓名": "蘇晉揚(主1)",
         "胸花": "新郎新娘"
     },
     {
         "桌次": "主",
-        "姓名": "翟嘉寧 Nicole",
+        "姓名": "翟嘉寧 Nicole(主20)",
         "胸花": "新郎新娘"
     },
     {
         "桌次": "主",
-        "姓名": "翟榮邦 David",
+        "姓名": "翟榮邦 David(主19)",
         "胸花": "主家 & 長老"
     },
     {
         "桌次": "主",
-        "姓名": "鍾敏霞 Amy",
+        "姓名": "鍾敏霞 Amy(主18)",
         "胸花": "主家 & 長老"
     },
     {
         "桌次": "主",
-        "姓名": "賴立彪 & 李靜慧夫人 #1",
+        "姓名": "賴立彪 理事長(主15)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "賴立彪 & 李靜慧夫人 #2",
+        "姓名": "賴立彪夫人 李靜慧(主16)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "郭守仁 & 夫人 #1",
+        "姓名": "郭守仁 (主13)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "郭守仁 & 夫人 #2",
+        "姓名": "郭守仁夫人 簡素玉(主12)",
         "胸花": "貴賓"
     },
     {
         "桌次": "主",
-        "姓名": "施茂林 & 夫人 #1",
+        "姓名": "施茂林部長(主10)",
         "胸花": "貴賓 (證婚人)"
     },
     {
         "桌次": "主",
-        "姓名": "施茂林 & 夫人 #2",
+        "姓名": "施茂林夫人 吳美惠(主11)",
         "胸花": "貴賓"
     }
 ];
 
-    // 資料預處理：修正 NaN 或 null，並確保姓名與桌次為字串
-    const guestData = rawData.map(item => {
-        return {
-            姓名: item.姓名 ? String(item.姓名).trim() : "",
-            桌次: item.桌次 ? String(item.桌次).trim() : "",
-            胸花: (item.胸花 && String(item.胸花) !== "NaN") ? String(item.胸花) : ""
-        };
-    }).filter(item => item.姓名 !== ""); // 移除空行
+    // 資料預處理
+    const guestData = rawData.map(item => ({
+        姓名: item.姓名 ? String(item.姓名).trim() : "",
+        桌次: item.桌次 ? String(item.桌次).trim() : "",
+        胸花: (item.胸花 && String(item.胸花) !== "NaN") ? String(item.胸花) : ""
+    })).filter(item => item.姓名 !== "");
 
     const nameInput = document.getElementById('nameInput');
     const tableInput = document.getElementById('tableInput');
-    const suggestionBox = document.getElementById('suggestionBox');
+    const nameSuggestionBox = document.getElementById('nameSuggestionBox');
+    const tableSuggestionBox = document.getElementById('tableSuggestionBox');
     const resultTable = document.getElementById('resultTable');
     const resultBody = document.getElementById('resultBody');
     const infoMsg = document.getElementById('infoMsg');
 
-    // 姓名輸入事件
+    // 1. 姓名輸入事件 (含自動索引)
     nameInput.addEventListener('input', function() {
         const val = this.value.trim();
-        suggestionBox.innerHTML = '';
-        
-        if (val === '') {
-            suggestionBox.style.display = 'none';
-            hideTable("請輸入資訊進行查詢");
-            return;
-        }
+        closeAllSuggestions();
+        if (!val) return hideTable("請輸入資訊進行查詢");
 
-        // 核心檢索：過濾出包含輸入文字的賓客
         const matches = guestData.filter(g => g.姓名.includes(val));
-
         if (matches.length > 0) {
-            suggestionBox.style.display = 'block';
+            nameSuggestionBox.style.display = 'block';
             matches.forEach(item => {
                 const div = document.createElement('div');
                 div.className = 'suggestion-item';
                 div.textContent = item.姓名;
                 div.onclick = () => {
                     nameInput.value = item.姓名;
-                    suggestionBox.style.display = 'none';
                     tableInput.value = ''; 
+                    closeAllSuggestions();
                     renderTable([item]);
                 };
-                suggestionBox.appendChild(div);
+                nameSuggestionBox.appendChild(div);
             });
-            // 同步更新下方表格 (即時預覽)
             renderTable(matches);
         } else {
-            suggestionBox.style.display = 'none';
             hideTable("查無此姓名");
         }
     });
 
-    // 桌次輸入事件
+    // 2. 桌次輸入事件 (新增自動索引)
     tableInput.addEventListener('input', function() {
         const val = this.value.trim();
-        nameInput.value = ''; 
-        suggestionBox.style.display = 'none';
+        closeAllSuggestions();
+        if (!val) return hideTable("請輸入資訊進行查詢");
 
-        if (val === '') {
-            hideTable("請輸入資訊進行查詢");
-            return;
+        // 取得不重複的桌次清單進行檢索
+        const allTables = [...new Set(guestData.map(g => g.桌次))];
+        const matchedTables = allTables.filter(t => t.includes(val));
+
+        if (matchedTables.length > 0) {
+            tableSuggestionBox.style.display = 'block';
+            matchedTables.forEach(tName => {
+                const div = document.createElement('div');
+                div.className = 'suggestion-item';
+                div.textContent = tName;
+                div.onclick = () => {
+                    tableInput.value = tName;
+                    nameInput.value = '';
+                    closeAllSuggestions();
+                    const tableMembers = guestData.filter(g => g.桌次 === tName);
+                    renderTable(tableMembers);
+                };
+                tableSuggestionBox.appendChild(div);
+            });
+            // 即時預覽所有符合桌次的賓客
+            const tableMatches = guestData.filter(g => g.桌次.includes(val));
+            renderTable(tableMatches);
+        } else {
+            hideTable("查無此桌次");
         }
-
-        const matches = guestData.filter(g => g.桌次 === val);
-        renderTable(matches);
     });
 
     function renderTable(data) {
@@ -1982,9 +2012,15 @@
         infoMsg.textContent = msg;
     }
 
-    // 點擊頁面其他地方關閉選單
+    function closeAllSuggestions() {
+        nameSuggestionBox.innerHTML = '';
+        nameSuggestionBox.style.display = 'none';
+        tableSuggestionBox.innerHTML = '';
+        tableSuggestionBox.style.display = 'none';
+    }
+
     document.addEventListener('click', (e) => {
-        if (e.target !== nameInput) suggestionBox.style.display = 'none';
+        if (e.target !== nameInput && e.target !== tableInput) closeAllSuggestions();
     });
 </script>
 
